@@ -1,0 +1,1 @@
+This workspace contains a shell.nix file, which takes care of (most of) the Bevy dependencies. To compile a program, start the shell first (via `nix-shell`) or run the command through an ephemeral shell with `nix-shell --run "cargo run"`.
