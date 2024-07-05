@@ -21,6 +21,13 @@ impl RandomNumberGenerator {
     pub fn range(&mut self, range: Range<u32>) -> u32 {
         self.rng.gen_range(range)
     }
+
+    pub fn next<T>(&mut self) -> T
+    where
+        rand::distributions::Standard: rand::prelude::Distribution<T>,
+    {
+        self.rng.gen()
+    }
 }
 
 impl Default for RandomNumberGenerator {
@@ -56,5 +63,12 @@ mod test {
                 rng.1.range(u32::MIN..u32::MAX)
             );
         });
+    }
+
+    #[test]
+    fn test_next_types() {
+        let mut rng = RandomNumberGenerator::new();
+        let _: i32 = rng.next();
+        let _ = rng.next::<f32>();
     }
 }
