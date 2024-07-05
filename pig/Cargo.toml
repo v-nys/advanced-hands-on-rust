@@ -1,11 +1,11 @@
-[workspace]
-members = [ "hello_bevy","hello_world", "my_library", "pig"]
-
 [package]
-name = "more_hands"
+name = "pig"
 version = "0.1.0"
 edition = "2021"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
 [dependencies]
+my_library = { path = "../my_library" }
+bevy = "0.12"
+bevy_egui = "0.23"

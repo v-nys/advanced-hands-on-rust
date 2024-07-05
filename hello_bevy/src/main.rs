@@ -1,28 +1,20 @@
 use bevy::prelude::*;
 
-fn movement(keyboard: Res<Input<KeyCode>>,
-            mut dragon_query: Query<&mut Transform, With<Dragon>>) {
+fn movement(keyboard: Res<Input<KeyCode>>, mut dragon_query: Query<&mut Transform, With<Dragon>>) {
     let delta = if keyboard.pressed(KeyCode::Left) {
         Vec2::new(-1.0, 0.0)
-    }
-    else if keyboard.pressed(KeyCode::Right) {
+    } else if keyboard.pressed(KeyCode::Right) {
         Vec2::new(1.0, 0.0)
-    }
-    else if keyboard.pressed(KeyCode::Down) {
+    } else if keyboard.pressed(KeyCode::Down) {
         Vec2::new(0.0, -1.0)
-
-    }
-    else if keyboard.pressed(KeyCode::Up) {
+    } else if keyboard.pressed(KeyCode::Up) {
         Vec2::new(0.0, 1.0)
-
-    }
-    else {
+    } else {
         Vec2::ZERO
     };
     dragon_query.for_each_mut(|mut transform| {
         transform.translation += delta.extend(0.0);
     });
-
 }
 
 fn main() {
